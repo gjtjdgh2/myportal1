@@ -8,11 +8,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
 	@RequestMapping("/main")
-	public ModelAndView main(@RequestParam String name) {
+	public ModelAndView main() {
 		ModelAndView mav = new ModelAndView();
 		
 		
-		mav.addObject("message","Hello"+name);
+		mav.addObject("message","Hello");
 		mav.setViewName("/WEB-INF/views/home.jsp");
 		return mav;
 	}
