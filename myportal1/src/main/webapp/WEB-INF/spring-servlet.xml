@@ -14,6 +14,9 @@
 <context:annotation-config/>
 <context:component-scan base-package="com.bitacademy.myportal1.contoller"></context:component-scan>
 
+<!-- 스프링은 기본적으로 모든 요청을 DispatcherServlet이 처리
+		정적 자원 제공을 위해서는 정적 자원의 처리를
+		DefaultServlet에게 위임해야 한다 -->
 <!-- validator, conversionService, messageConverter를 자동으로 등록 -->
 <mvc:annotation-driven />
 <!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
