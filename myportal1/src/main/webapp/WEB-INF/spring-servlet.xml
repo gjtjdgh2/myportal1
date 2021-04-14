@@ -7,6 +7,15 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
+<!-- 찾는곳 잘 추가하시 세로운 패키지 만들어거 경로 바뀔시 -->
 <context:annotation-config/>
-<context:component-scan base-package="com.bitacademy.myportal.contoller.MainController"></context:component-scan>
+<context:component-scan base-package="com.bitacademy.myportal.contoller.MainController"></context:component-scan> 
+
+<context:annotation-config/>
+<context:component-scan base-package="com.bitacademy.myportal1.contoller"></context:component-scan>
+
+<!-- validator, conversionService, messageConverter를 자동으로 등록 -->
+<mvc:annotation-driven />
+<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
+<mvc:default-servlet-handler/>
 </beans>

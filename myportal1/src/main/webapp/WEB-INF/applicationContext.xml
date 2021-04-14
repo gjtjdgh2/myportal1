@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
+<!-- 컴포넌트 스캔 등록 -->
+	<context:annotation-config />
+	<context:component-scan 
+		base-package="com.bitacademy.myportal1.service
+						com.bitacademy.myportal1.repository">
+		<!-- Service, Repository만 검색 -->
+		<context:include-filter 
+			type="annotation" 
+			expression="org.springframework.stereotype.Service"/>
+		<context:include-filter 
+			type="annotation" 
+			expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>
+	
+	<!-- view Resolver
+	전달받은 ViewName을 기반으로 적절한 실제 View객체를 찾아준다 -->
+<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<!-- ViewName의 접두어 -->
+		<property name="prefix"
+			value="/WEB-INF/views/" />
+		<!-- 접미어 -->
+		<property name="suffix"
+			value=".jsp" />
+		<!-- ViewResolver는 여러 개 등록될 수 있고
+			우선순위 지정 가능 -->
+		<property name="order" value="1" />
+	</bean>
+	
+</beans>
