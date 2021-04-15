@@ -2,7 +2,7 @@ package com.bitacademy.myportal1.repository;
 
 import java.util.List;
 
-import com.bitacademy.myportal1.Vo.GuestBookVo;
+import com.bitacademy.myportal1.vo.GuestBookVo;
 
 public interface GuestBookDao {
 	public List<GuestBookVo> selectAll();

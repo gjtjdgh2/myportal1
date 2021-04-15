@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bitacademy.myportal1.Vo.GuestBookVo;
 import com.bitacademy.myportal1.repository.GuestBookDao;
+import com.bitacademy.myportal1.vo.GuestBookVo;
 
 @Service
 public class GuestBookServiceImpl implements GuestBookService {
@@ -23,14 +23,14 @@ public class GuestBookServiceImpl implements GuestBookService {
 
 	@Override
 	public boolean writeMessage(GuestBookVo vo) {
-		// TODO Auto-generated method stub
-		return false;
+		int insertedCount = guestBookDaoImpl.insert(vo);
+		return insertedCount ==1;
 	}
 
 	@Override
 	public boolean deleteMessage(GuestBookVo vo) {
-		// TODO Auto-generated method stub
-		return false;
+		int deletedCount = guestBookDaoImpl.delete(vo);
+		return deletedCount ==1;
 	}
 
 }

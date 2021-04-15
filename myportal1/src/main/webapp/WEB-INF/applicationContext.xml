@@ -22,7 +22,7 @@
 			expression="org.springframework.stereotype.Repository"/>
 			<context:include-filter 
 			type="annotation" 
-			expression="org.springframework.stereotype.Exception"/>
+			expression="org.springframework.stereotype.Component"/>
 	</context:component-scan>
 	
 	<!-- Oracle datasource -->

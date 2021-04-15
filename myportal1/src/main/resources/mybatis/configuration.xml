@@ -3,6 +3,11 @@
 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+<typeAliases>
+	<typeAlias alias="guestbookVo" type="com.bitacademy.myportal1.vo.GuestBookVo"/>
+</typeAliases>
+
 	<mappers>
 	<!-- guestbook에 관련된 매퍼 -->
 		<mapper resource="mybatis/mappers/guestbook.xml"/>

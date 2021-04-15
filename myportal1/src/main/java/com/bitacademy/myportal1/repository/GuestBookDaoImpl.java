@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.bitacademy.myportal1.Vo.GuestBookVo;
+import com.bitacademy.myportal1.vo.GuestBookVo;
 
 @Repository //이름을 명시 하지 않으면 클래스 이름을 기반으로 자동 명명  guestBookDaoImpl 이됨
 public class GuestBookDaoImpl implements GuestBookDao {
@@ -31,8 +31,8 @@ public class GuestBookDaoImpl implements GuestBookDao {
 
 	@Override
 	public int delete(GuestBookVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int deletedCount = sqlSession.delete("guestbook.delete",vo);
+		return deletedCount;
 	}
 
 }

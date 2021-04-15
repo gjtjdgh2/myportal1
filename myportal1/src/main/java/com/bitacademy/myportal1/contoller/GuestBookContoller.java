@@ -6,19 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bitacademy.myportal1.Vo.GuestBookVo;
 import com.bitacademy.myportal1.service.GuestBookService;
+import com.bitacademy.myportal1.vo.GuestBookVo;
 
 @RequestMapping("/guestbook")
 @Controller
 public class GuestBookContoller {
 	@Autowired
 	GuestBookService guestBookServiceImpl;
-	@ResponseBody
+//	@ResponseBody
 	@RequestMapping({"","/","/list"})
 	// ->/guestbook ,/guestbook/ ,guestbook/list
 	public String list(Model model) {
@@ -40,4 +40,19 @@ public class GuestBookContoller {
 		return "redirect:/guestbook";
 	}
 	
+	//게시물 삭제 폼
+	@RequestMapping(value="/delete/{no}",
+			method=RequestMethod.GET)
+	public String deleteForm(@PathVariable Long no,Model model) {
+		model.addAttribute("no",no);
+		return "guestbook/deleteform";
+	}
+	
+	//게시물 삭제 기능
+	@RequestMapping(value="/delete", method=RequestMethod.POST)
+	public String delete(@ModelAttribute GuestBookVo vo) {
+		boolean success = guestBookServiceImpl.deleteMessage(vo);
+		System.out.println("Delete Result:"+success);
+		return "redirect:/guestbook";
+	}
 }
