@@ -35,6 +35,19 @@ destroy-method="close">
 <qualifier value="main-db" />
 </bean>
 	
-	
+<!-- MyBatis SqlSessionFactoryBean 등록-->
+<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+<property name="dataSource" ref="oracleDatasource" /> <!-- ref 받는것의 id -->
+<property name="configLocation" value="classpath:mybatis/configuration.xml" />
+</bean>
+
+<!-- MyBatis SqlSessionTemplate -->
+<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+<constructor-arg index="0" ref="sqlSessionFactory" />
+</bean>
+
+
+
+
 	
 </beans>
