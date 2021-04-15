@@ -9,7 +9,7 @@
 	<select id="selectAll" 
 		resultType="guestbookVo">
 	<![CDATA[
-	SELECT no, name, password, content, regdate as regDate
+	select no, name, password, content, regdate as regDate
 	FROM guestbook
 	ORDER BY regdate DESC
 	]]>	
