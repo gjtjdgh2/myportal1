@@ -21,4 +21,22 @@
 <mvc:annotation-driven />
 <!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
 <mvc:default-servlet-handler/>
+
+<!-- view Resolver
+	전달받은 ViewName을 기반으로 적절한 실제 View객체를 찾아준다 -->
+<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<!-- ViewName의 접두어 -->
+		<property name="prefix"
+			value="/WEB-INF/views/" />
+		<!-- 접미어 -->
+		<property name="suffix"
+			value=".jsp" />
+		<!-- ViewResolver는 여러 개 등록될 수 있고
+			우선순위 지정 가능 -->
+		<property name="order" value="1" />
+	</bean>
+	
 </beans>
