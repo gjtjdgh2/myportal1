@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +14,8 @@ import com.bitacademy.myportal1.vo.GuestBookVo;
 
 @Repository //이름을 명시 하지 않으면 클래스 이름을 기반으로 자동 명명  guestBookDaoImpl 이됨
 public class GuestBookDaoImpl implements GuestBookDao {
+	//로거 설정
+	private static Logger logger= LoggerFactory.getLogger(GuestBookDaoImpl.class);
 	//데이터 소스 연결
 	@Autowired
 	SqlSession sqlSession;
@@ -19,7 +23,8 @@ public class GuestBookDaoImpl implements GuestBookDao {
 	@Override
 	public List<GuestBookVo> selectAll() {
 		List<GuestBookVo> list = sqlSession.selectList("guestbook.selectAll");
-		System.out.println("방명록:" + list);
+		//System.out.println("방명록:" + list);
+		logger.debug("방멸록:"+list);
 		return list;
 	}
 

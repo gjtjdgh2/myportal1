@@ -32,6 +32,13 @@
     <groupId>org.springframework</groupId>
     <artifactId>spring-context</artifactId>
     <version>${org.springframework-version}</version>
+    <!-- logger 교체를 위해 기본 로거를 배재한다(빼고 빌드) -->
+    <exclusions>
+    	<exclusion>
+    		<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+    	</exclusion>
+    </exclusions>
 </dependency>
 
 <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
@@ -97,6 +104,22 @@
     <version>2.12.3</version>
 </dependency>
 
+<!-- https://mvnrepository.com/artifact/org.slf4j/jcl-over-slf4j -->
+<!-- jcl over slf4j: jcl  logback 브릿지-->
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>jcl-over-slf4j</artifactId>
+    <version>1.7.30</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+<!-- logback 라이브러리 -->
+<dependency>
+    <groupId>ch.qos.logback</groupId>
+    <artifactId>logback-classic</artifactId>
+    <version>1.2.3</version>
+    
+</dependency>
 
 
   </dependencies>
