@@ -6,11 +6,14 @@
 
 <typeAliases>
 	<typeAlias alias="guestbookVo" type="com.bitacademy.myportal1.vo.GuestBookVo"/>
+	<typeAlias alias="memberVo" type="com.bitacademy.myportal1.vo.MemberVo"/>
 </typeAliases>
 
 	<mappers>
 	<!-- guestbook에 관련된 매퍼 -->
 		<mapper resource="mybatis/mappers/guestbook.xml"/>
+		<!-- member에 관련된 매퍼 -->
+		<mapper resource="mybatis/mappers/members.xml"/>
 	</mappers>
 </configuration>
 	
