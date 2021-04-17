@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,12 +15,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bitacademy.myportal1.repository.MemberDaoImpl;
 import com.bitacademy.myportal1.service.MemberService;
 import com.bitacademy.myportal1.vo.MemberVo;
 
 @Controller
 @RequestMapping("/members")
 public class MemberController {
+	private static Logger logger= LoggerFactory.getLogger(MemberController.class);
+	
 	//서비스 연결
 	@Autowired
 	private MemberService memberService;
@@ -34,10 +39,12 @@ public class MemberController {
 	@RequestMapping(value= "/join",
 			method=RequestMethod.POST)
 	public String joinAction(@ModelAttribute MemberVo memberVo) {
-		System.out.println("form 전송된 데이터:"+memberVo);
+		//System.out.println("form 전송된 데이터:"+memberVo);
+		logger.debug("form 전송된 데이터:"+memberVo);
 		boolean success = memberService.join(memberVo);
 		if(success) {// insert성공
-			System.out.println("가입 성공!");
+			//System.out.println("가입 성공!");
+			logger.debug("가입 성공!");
 			return "redirect:/members/joinsuccess";
 		}else {
 			System.err.println("가입실패");

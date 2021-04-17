@@ -2,6 +2,8 @@ package com.bitacademy.myportal1.contoller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,12 +12,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bitacademy.myportal1.repository.GuestBookDaoImpl;
 import com.bitacademy.myportal1.service.GuestBookService;
 import com.bitacademy.myportal1.vo.GuestBookVo;
 
 @RequestMapping("/guestbook")
 @Controller
 public class GuestBookContoller {
+	private static Logger logger= LoggerFactory.getLogger(GuestBookContoller.class);
+	
 	@Autowired
 	GuestBookService guestBookServiceImpl;
 //	@ResponseBody
@@ -32,9 +37,11 @@ public class GuestBookContoller {
 	@RequestMapping(value="/write",
 			method=RequestMethod.POST)
 	public String write(@ModelAttribute GuestBookVo vo) {
-		System.out.println("VO:" + vo);
+		//System.out.println("VO:" + vo);
+		logger.debug("VO:" + vo);
 		boolean success = guestBookServiceImpl.writeMessage(vo);
-		System.out.println("Write Result:" + success);
+		//System.out.println("Write Result:" + success);
+		logger.debug("Write Result:" + success);
 
 		//	리스트 페이지로 리다이렉트
 		return "redirect:/guestbook";
@@ -52,7 +59,8 @@ public class GuestBookContoller {
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	public String delete(@ModelAttribute GuestBookVo vo) {
 		boolean success = guestBookServiceImpl.deleteMessage(vo);
-		System.out.println("Delete Result:"+success);
+		//System.out.println("Delete Result:"+success);
+		logger.debug("Delete Result:"+success);
 		return "redirect:/guestbook";
 	}
 }
