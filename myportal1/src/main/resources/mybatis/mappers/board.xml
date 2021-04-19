@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="board">
+	
+	<select id="selectAll"  resultType="boardVo">
+		<![CDATA[
+		select b.no, b.title,b.content,b.hit,b.reg_date as regDate,
+		m.no as memberNo, m.name as memberName 
+		from board b,members m 
+		where b.member_no = m.no
+		
+		]]>
+		
+	</select>
+	
+	<insert id="insert"  parameterType="boardVo">
+	<![CDATA[
+	insert into board (no,title,content,member_no) 
+	values (seq_board_pk.nextval,#{title},#{content},#{memberNo})
+	]]>
+	</insert>
+	
+	<select id="getContent" parameterType="Long" resultType="boardVo">
+	<![CDATA[
+	select b.no, b.title,b.content,b.hit,b.reg_date as regDate,
+	b.member_no as memberNo, m.name as memberName 
+	from board b,members m 
+	where b.member_no = m.no and b.no =#{value}
+	]]>
+	
+	</select>
+	<!-- 게시물 hit 증가 쿼리 -->
+	<update id="increaseHitCount" parameterType="Long">
+	<![CDATA[
+	update board set hit = hit +1 where no=#{vlaue}
+	]]>
+	</update>
+	
+<!-- 게시물 Update 쿼리 -->
+	<update id="update" parameterType="boardVo">
+	<![CDATA[
+	UPDATE board
+	SET title=#{title}, content=#{content}
+	WHERE no = #{no}
+	]]>
+	</update>
+	
+</mapper>

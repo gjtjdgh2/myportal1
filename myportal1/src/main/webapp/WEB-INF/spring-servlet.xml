@@ -53,7 +53,31 @@
 		<property name="order" value="1" />
 	</bean>
 	
+	<!-- Interceptors -->
+	<mvc:interceptors>
+		<!-- 순서대로 적용된다 -->
+		<!--  <mvc:interceptor>
 	
+			<mvc:mapping path="/board/**" />
+				<bean class="com.bitacademy.myportal1.interceptors.MyInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+	
+			<mvc:mapping path="/board/**" />
+				<bean class="com.bitacademy.myportal1.interceptors.MyInterceptor2" />
+		</mvc:interceptor> -->
+		<mvc:interceptor>
+	
+		<mvc:mapping path="/board/**" />
+		<!-- 아래 매핑은 인터셉터에서 겆용 제외 -->
+		<mvc:exclude-mapping path="/board/list/**"/>
+		<mvc:exclude-mapping path="/board/"/>
+		<mvc:exclude-mapping path="/board"/>
+		<bean class="com.bitacademy.myportal1.interceptors.Authlntercrptor" />
+		</mvc:interceptor>
+		
+		
+	</mvc:interceptors>
 	
 	
 </beans>

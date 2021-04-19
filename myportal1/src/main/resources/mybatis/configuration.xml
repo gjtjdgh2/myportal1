@@ -7,6 +7,7 @@
 <typeAliases>
 	<typeAlias alias="guestbookVo" type="com.bitacademy.myportal1.vo.GuestBookVo"/>
 	<typeAlias alias="memberVo" type="com.bitacademy.myportal1.vo.MemberVo"/>
+	<typeAlias alias="boardVo" type="com.bitacademy.myportal1.vo.BoardVo"/>
 </typeAliases>
 
 	<mappers>
@@ -14,6 +15,7 @@
 		<mapper resource="mybatis/mappers/guestbook.xml"/>
 		<!-- member에 관련된 매퍼 -->
 		<mapper resource="mybatis/mappers/members.xml"/>
+		<mapper resource="mybatis/mappers/board.xml"/>
 	</mappers>
 </configuration>
 	
